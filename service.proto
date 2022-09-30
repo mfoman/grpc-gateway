@@ -1,0 +1,11 @@
+ syntax = "proto3";
+ package service;
+ option go_package = "https://github.com/mfoman/grpc-gateway;service";
+
+ message StringMessage {
+   string value = 1;
+ }
+
+ service YourService {
+   rpc Echo(StringMessage) returns (StringMessage) {}
+ }
