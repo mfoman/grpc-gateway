@@ -1,11 +1,18 @@
  syntax = "proto3";
  package service;
- option go_package = "https://github.com/mfoman/grpc-gateway;service";
+ option go_package = "github.com/mfoman/grpc-gateway/service";
+
+ import "google/api/annotations.proto";
 
  message StringMessage {
    string value = 1;
  }
 
  service YourService {
-   rpc Echo(StringMessage) returns (StringMessage) {}
+   rpc Echo(StringMessage) returns (StringMessage) {
+    option (google.api.http) = {
+      post: "/v1/example/echo"
+      body: "*"
+    };
+   }
  }
